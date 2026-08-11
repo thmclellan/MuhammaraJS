@@ -106,4 +106,17 @@ describe("Encryption", () => {
       .endPage()
       .endPDF(done);
   });
+
+  const taskMPFI = "Modify file with view password preserving info";
+  it(taskMPFI, (done) => {
+    const input = path.join(__dirname, `../output/${taskCPF}.pdf`);
+    const output = path.join(__dirname, `../output/${taskMPFI}.pdf`);
+    const recipe = new HummusRecipe(input, output, { userPassword: "123" });
+
+    recipe
+      .editPage(1)
+      .text("Info metadata is written via the decrypting reader.", 150, 450)
+      .endPage()
+      .endPDF(done);
+  });
 });
