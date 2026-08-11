@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add recipe option `ignoreInfo` to skip writing info metadata (author, title, producer, mod date) when saving
+
+### Fixed
+
+- Fix recipe endPDF failing with "unable to create copying context" when modifying
+  PDFs encrypted with a view password, by reading the source info dictionary through
+  the decrypting reader [hummusRecipe#185](https://github.com/chunyenHuang/hummusRecipe/issues/185)
+
 ## [6.0.6] - 2026-08-22
 
 ### Fixed
