@@ -89,17 +89,21 @@ describe("Encryption", () => {
       .endPDF(done);
   });
 
-  // TODO: this seems to be broken
-  // const taskMPF = 'Modify file with view password';
-  // it(taskMPF, (done) => {
-  //     const input = path.join(__dirname, `../output/${taskCPF}.pdf`);
-  //     const output = path.join(__dirname, `../output/${taskMPF}.pdf`);
-  //     const recipe = new HummusRecipe(input, output, { userPassword: '123' });
+  const taskMPF = "Modify file with view password";
+  it(taskMPF, (done) => {
+    const input = path.join(__dirname, `../output/${taskCPF}.pdf`);
+    const output = path.join(__dirname, `../output/${taskMPF}.pdf`);
+    // Reading the info dictionary of an encrypted source fails
+    // (unable to create copying context), so skip info updates.
+    const recipe = new HummusRecipe(input, output, {
+      userPassword: "123",
+      ignoreInfo: true,
+    });
 
-  //     recipe
-  //         .editPage(1)
-  //         .text('The userPassword is also required to modify the file.', 150, 400)
-  //         .endPage()
-  //         .endPDF(done);
-  // });
+    recipe
+      .editPage(1)
+      .text("The userPassword is also required to modify the file.", 150, 400)
+      .endPage()
+      .endPDF(done);
+  });
 });
