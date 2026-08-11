@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Set version of checkout action to v6
 - Set versoin of cache action to v5
 - Add missing type definitions for PDFReader methods and PDFObjectParser interface [#479](https://github.com/julianhille/MuhammaraJS/issues/479)
+- Add recipe option `ignoreInfo` to skip writing info metadata (author, title, producer, mod date) when saving
 
 ### Fixed
 
@@ -20,6 +21,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix DictionaryContext.writeKey() signature to include required key parameter [#479](https://github.com/julianhille/MuhammaraJS/issues/479)
 - Memory leak, by improper addition of document context extender instead of removal
 - Update dependencies
+- Fix recipe endPDF failing with "unable to create copying context" when modifying
+  PDFs encrypted with a view password, by reading the source info dictionary through
+  the decrypting reader [hummusRecipe#185](https://github.com/chunyenHuang/hummusRecipe/issues/185)
 
 ### Removed
 
